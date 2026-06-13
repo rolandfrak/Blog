@@ -1,0 +1,500 @@
+/* ==========================================================================
+   HERO ADAPTATIVO PREMIUM (PC: IZQUIERDA | MÓVIL: CENTRAL FULL-HEIGHT)
+   ========================================================================== */
+.hero-blog {
+    position: relative;
+    height: 70vh; /* Altura imponente en escritorio */
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    
+    /* PC: Alinea todo el bloque de contenido hacia la izquierda */
+    justify-content: flex-start; 
+    padding: 0 8% 0 8%; /* Margen interno para despegar el texto del borde izquierdo */
+    
+    margin-top: 80px; /* Respeta el menú superior fijo */
+    overflow: hidden;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background-color: #070b14;
+}
+
+/* Pseudo-elemento vivo para la imagen de fondo */
+.hero-blog::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Asegúrate de que la ruta apunte correctamente a tu nueva imagen tecnológica */
+    background-image: url('../img/hero-blog.jpg'); 
+    background-size: cover;
+    
+    /* PC: Mantiene el fondo cargado a la derecha para lucir los servidores y tu rostro */
+    background-position: right center; 
+    background-repeat: no-repeat;
+    z-index: 0;
+    animation: heroCinematicEffect 25s infinite alternate ease-in-out;
+    will-change: transform;
+}
+
+@keyframes heroCinematicEffect {
+    0% { transform: scale(1.02); }
+    100% { transform: scale(1.08); }
+}
+
+/* Capa de contraste inteligente (Asimétrica para PC) */
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* En PC oscurece más el lado izquierdo para dar máxima legibilidad al texto */
+    background: linear-gradient(to right, 
+        rgba(7, 11, 20, 0.95) 0%, 
+        rgba(11, 17, 30, 0.8) 40%, 
+        rgba(11, 17, 30, 0.5) 70%,
+        rgba(7, 11, 20, 0.85) 100%
+    );
+    z-index: 1;
+}
+
+/* Caja de contenido (PC: Alineación izquierda nativa) */
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: left; /* Títulos alineados a la izquierda */
+    color: white;
+    max-width: 650px; /* Evita que el bloque de texto se extienda sobre tu rostro */
+    animation: heroContentFade 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes heroContentFade {
+    0% { opacity: 0; transform: translateX(-30px); }
+    100% { opacity: 1; transform: translateX(0); }
+}
+
+/* Tipografía de Alto Impacto */
+.hero-content h1 {
+    font-size: 5.8rem;
+    font-weight: 900;
+    margin: 10px 0 15px 0;
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+    line-height: 1.05;
+    background: linear-gradient(135deg, #ffffff 40%, #4da7db 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.5));
+}
+
+.hero-content p {
+    font-size: 1.45rem;
+    margin: 0 0 35px 0;
+    color: #cbd5e1;
+    font-weight: 300;
+    letter-spacing: 0.01em;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+/* Badge Tecnológico Estilo Cristal */
+.hero-badge {
+    display: inline-block;
+    background: rgba(20, 110, 166, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 8px 20px;
+    border-radius: 30px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #3b82f6;
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* ==========================================================================
+   RESPONSIVE - MÓVIL EN VERTICAL COMPLETO (INSPIRADO EN TU PORTAFOLIO)
+   ========================================================================== */
+@media (max-width: 768px) {
+    .hero-blog {
+        /* FOCO MÓVIL: Ocupa prácticamente todo el alto de la pantalla del celular */
+        height: calc(100vh - 80px); 
+        min-height: 520px;
+        
+        /* Cambia la alineación mecánica al centro */
+        justify-content: center; 
+        padding: 0 24px;
+    }
+    
+    .hero-blog::before {
+        /* Centra el fondo adaptándolo al encuadre vertical de los teléfonos */
+        background-position: 90% center; 
+    }
+    
+    .hero-overlay {
+        /* Capa uniforme y más intensa en móviles para asegurar contraste total */
+        background: linear-gradient(to bottom, 
+            rgba(7, 11, 20, 0.75) 0%, 
+            rgba(11, 17, 30, 0.85) 50%,
+            rgba(7, 11, 20, 0.95) 100__%
+        );
+    }
+    
+    .hero-content {
+        /* Todo al centro en dispositivos móviles */
+        text-align: center; 
+        margin: 0 auto;
+        max-width: 100%;
+    }
+    
+    .hero-content h1 {
+        font-size: 3.8rem; /* Tamaño optimizado para pantallas verticales */
+        margin-bottom: 12px;
+    }
+    
+    .hero-content p {
+        font-size: 1.2rem;
+        margin-bottom: 28px;
+    }
+}
+
+/* ==========================================================================
+   SUBMENÚ LATERAL FLOTANTE PREMIUM
+   ========================================================================== */
+
+/* Contenedor del Layout Estructural */
+.blog-layout-container {
+    max-width: 1200px;
+    margin: 0px auto;
+    padding:  0.1px;
+    display: flex;
+    gap: 40px;
+    position: relative;
+}
+
+/* Área de contenido del Blog */
+.blog-main-content {
+    flex: 1;
+    min-height: 400px;
+}
+
+.blog-placeholder {
+    background: #f8fafc;
+    border: 1px dashed #cbd5e1;
+    padding: 40px;
+    border-radius: 8px;
+    text-align: center;
+    color: #64748b;
+}
+
+/* Componente del Sidebar de Soporte */
+.blog-sidebar {
+    position: fixed;
+    left: 0;
+    /* 1. Cambiamos el top para situarlo más arriba (justo abajo del navbar + un margen) */
+    top: 90px; 
+    
+    /* 2. Eliminamos por completo el transform que lo centraba */
+    transform: none; 
+    
+    z-index: 99999; /* Asegura estar por encima de todo el contenido */
+}
+
+/* El botón flotante con la flechita */
+#sidebar-toggle {
+    position: absolute;
+    left: 0; /* Cambiará dinámicamente con JS al abrirse */
+    top: 0;
+    width: 45px;
+    height: 45px;
+    border: 10px;
+    background: #146EA6;
+    border-color: #ffffff;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0 8px 8px 0; /* Redondeado solo en el borde derecho */
+    box-shadow: 2px 0 10px rgba(0,0,0,.15);
+    transition: left 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.3s ease;
+}
+
+/* El Menú de Navegación Escondido por Defecto */
+#sidebar-menu {
+    position: absolute;
+    left: -260px; /* Completamente oculto a la izquierda */
+    top: 0;
+    width: 250px;
+    background: white;
+    box-shadow: 5px 0 25px rgba(0,0,0,.15);
+    border-radius: 0 8px 8px 0;
+    overflow: hidden;
+    transition: left 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Clase de Activación cuando se da Clic */
+#sidebar-menu.open {
+    left: 0;
+}
+
+/* Estilos internos del Menú */
+.sidebar-title {
+    font-size: 1.1rem;
+    color: #ffffff;
+    background: #146EA6;
+    padding: 15px;
+    margin: 0;
+    font-weight: 700;
+    text-align: center;
+}
+
+#sidebar-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#sidebar-menu li {
+    border-bottom: 1px solid #eee;
+}
+
+#sidebar-menu a {
+    display: block;
+    padding: 15px 20px;
+    color: #333;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.25s ease;
+}
+
+#sidebar-menu a:hover {
+    background: #f1f5f9;
+    color: #146EA6;
+    padding-left: 25px;
+}
+
+
+
+
+
+/* ==========================================================================
+   SECCIÓN DE SERVIDORES ESTILO SAAS TECH 2026 (FULL WIDTH)
+   ========================================================================== */
+   
+   /* Modificación en tu clase contenedora principal */
+.servidores-section-wrapper {
+    width: 100%;
+    background-color: #0b111e;
+    padding: 20px 0;
+    
+    /* CAMBIO CLAVE: Cambiamos 'display: flex' por 'display: none' para ocultarlas de entrada */
+    display: none; 
+    
+    flex-direction: column;
+    gap: 60px;
+    box-sizing: border-box;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* NUEVA CLASE: Activador dinámico mediante JavaScript */
+.servidores-section-wrapper.active {
+    display: flex; /* Se muestra con su comportamiento flex original solo cuando está activa */
+}
+   
+
+/* Contenedor del título de sección */
+.section-dark-title-container {
+    max-width: 1300px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 40px;
+    box-sizing: border-box;
+}
+
+.tech-tag {
+    color: #3b82f6;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    display: inline-block;
+    margin-bottom: 8px;
+}
+
+.main-section-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0;
+    letter-spacing: -0.02em;
+}
+
+/* Tarjeta de Presentación Completa */
+.presentation-card {
+    max-width: 1300px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 40px;
+    box-sizing: border-box;
+}
+
+.presentation-header {
+    margin-bottom: 25px;
+}
+
+.presentation-title {
+    font-size: 1.7rem;
+    font-weight: 700;
+    color: #f1f5f9;
+    margin: 0 0 8px 0;
+}
+
+.presentation-desc {
+    font-size: 1.05rem;
+    color: #94a3b8;
+    margin: 0;
+    line-height: 1.6;
+    max-width: 900px;
+}
+
+/* Contenedor del Cuerpo Rejilla Dividida */
+.presentation-body-layout {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 30px;
+    background: #131b2e; /* Color del contenedor de la interfaz */
+    padding: 25px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* El Visor Moderno del PDF/Presentación */
+.viewer-wrapper {
+    position: relative;
+    width: 100%;
+    height: 580px;
+    background: #070b14;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.drive-iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* Panel de Descargas Lateral */
+.actions-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+}
+
+.btn-download {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 20px;
+    border-radius: 14px;
+    text-decoration: none !important;
+    color: white !important;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid transparent;
+}
+
+/* Naranja Neón Inteligente */
+.btn-orange {
+    background: linear-gradient(135deg, rgba(249, 115, 22, 0.1) 0%, rgba(234, 88, 12, 0.2) 100%);
+    border-color: rgba(249, 115, 22, 0.25);
+}
+.btn-orange:hover {
+    transform: translateY(-3px);
+    border-color: #f97316;
+    background: linear-gradient(135deg, rgba(249, 115, 22, 0.2) 0%, rgba(234, 88, 12, 0.35) 100%);
+    box-shadow: 0 10px 25px rgba(249, 115, 22, 0.2);
+}
+.btn-orange .btn-icon { color: #f97316; }
+
+/* Azul Eléctrico */
+.btn-blue {
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(29, 78, 216, 0.2) 100%);
+    border-color: rgba(37, 99, 235, 0.25);
+}
+.btn-blue:hover {
+    transform: translateY(-3px);
+    border-color: #2563eb;
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.2) 0%, rgba(29, 78, 216, 0.35) 100%);
+    box-shadow: 0 10px 25px rgba(37, 99, 235, 0.2);
+}
+.btn-blue .btn-icon { color: #3b82f6; }
+
+.btn-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.04);
+    flex-shrink: 0;
+}
+
+.btn-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.btn-text span {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #64748b;
+}
+
+.btn-text strong {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+/* ==========================================================================
+   RESPONSIVE (ADAPTACIÓN PARA CELULARES)
+   ========================================================================== */
+@media (max-width: 992px) {
+    .presentation-body-layout {
+        grid-template-columns: 1fr;
+        padding: 15px;
+    }
+    .viewer-wrapper {
+        height: 420px;
+    }
+    .actions-sidebar {
+        flex-direction: row;
+    }
+    .btn-download {
+        flex: 1;
+    }
+}
+
+@media (max-width: 640px) {
+    .section-dark-title-container, .presentation-card {
+        padding: 0 20px;
+    }
+    .main-section-title {
+        font-size: 1.8rem;
+    }
+    .actions-sidebar {
+        flex-direction: column;
+    }
+}
