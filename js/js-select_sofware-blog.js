@@ -1,0 +1,82 @@
+// js/js-select_servidor-blog.js
+document.addEventListener("DOMContentLoaded", () => {
+    const contenedor = document.getElementById("contenedor-software");
+    if (!contenedor) return; // IMPORTANTE: Si no existe el contenedor en esta página, sale pacíficamente.
+
+    const presentaciones = [
+        
+        { 
+        id: "Instalación Windows 10", 
+        titulo: "Instalación de Windows 10", 
+        descripcion: "Instalación y ejecución de sistema operativo de arranque Windows 10", 
+        urlEmbed: "https://drive.google.com/file/d/1MtyKDmxhO2E7e4L7lkCAlNXcjz1EHIv7/preview",
+        urlDescargaPres: "https://drive.google.com/file/d/1MtyKDmxhO2E7e4L7lkCAlNXcjz1EHIv7/view?usp=drivesdk", 
+        urlDescargaPdf: "https://drive.google.com/file/d/1BlS3LE4VEh_pIdo0Z49VU5HOZ2U63y3z/view?usp=drivesdk" 
+        }
+        
+         
+
+    
+    
+    
+    
+    /*      
+        {
+            id: "server-instalacion",
+            titulo: "Instalación de Windows Server En VirtualBox",
+            descripcion: "Instalación y ejecución de Windows Server En máquina virtual: VirtualBox",
+            urlEmbed: "https://drive.google.com/file/d/18O7geQN15uRmr79vJXp6jmRjibFPcink/preview",
+            urlDescargaPres: "https://drive.google.com/file/d/18O7geQN15uRmr79vJXp6jmRjibFPcink/view?usp=drivesdk",
+            urlDescargaPdf: "https://drive.google.com/file/d/1rl_u67g3ngWkvT8WERANu0RveOpOgUZn/view?usp=drivesdk"
+        },
+        {
+            id: "server-config-basica-1",
+            titulo: "Configuración Básica de Windows Server En VirtualBox",
+            descripcion: "Configuración Básica de Windows Server en máquina virtual. Cambio de nombre de equipo, entorno de PowerShell y habilitación de actualizaciones.",
+            urlEmbed: "https://drive.google.com/file/d/1Hl8TQeI8mYd3kINCmOiQEri37edmOiZ9/preview",
+            urlDescargaPres: "https://drive.google.com/file/d/1Hl8TQeI8mYd3kINCmOiQEri37edmOiZ9/view?usp=drivesdk",
+            urlDescargaPdf: "https://drive.google.com/file/d/1SHoI-kqLhh_s1zIs3MQEwJJpqTpkTM_2/view?usp=drivesdk"
+        }
+        */
+        
+    ];
+
+    let htmlGenerado = `
+        <div class="section-dark-title-container">
+            <span class="tech-tag">Módulo Especializado</span>
+            <h2 class="main-section-title">Instalación y configuración de Software</h2>
+        </div>
+    `;
+
+    presentaciones.forEach(pres => {
+        htmlGenerado += `
+            <div class="presentation-card" id="${pres.id}">
+                <div class="presentation-header">
+                    <h3 class="presentation-title">${pres.titulo}</h3>
+                    <p class="presentation-desc">${pres.descripcion}</p>
+                </div>
+                <div class="presentation-body-layout">
+                    <div class="viewer-wrapper">
+                        <iframe src="${pres.urlEmbed}" class="drive-iframe" allow="autoplay" loading="lazy" title="${pres.titulo}"></iframe>
+                    </div>
+                    <div class="actions-sidebar">
+                        <a href="${pres.urlDescargaPres}" target="_blank" class="btn-download btn-orange">
+                            <div class="btn-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                            </div>
+                            <div class="btn-text"><span>Descargar</span><strong>Presentación PPTX</strong></div>
+                        </a>
+                        <a href="${pres.urlDescargaPdf}" target="_blank" class="btn-download btn-blue">
+                            <div class="btn-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="12" y1="18" x2="12" y2="12"></line><polyline points="9 15 12 12 15 15"></polyline></svg>
+                            </div>
+                            <div class="btn-text"><span>Obtener PDF</span><strong>Guía Paso a Paso</strong></div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        `;
+    });
+
+    contenedor.innerHTML = htmlGenerado;
+});
